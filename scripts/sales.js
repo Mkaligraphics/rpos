@@ -27,6 +27,10 @@ $(document).on('keyup', '#search',function(){
     
 });
 
+
+
+
+
 //plus and minus button
   $(document).ready(function(){
     $('#qty_input').prop('disabled', true);
@@ -55,6 +59,41 @@ $(document).on('change','#categorisedFood',function(){
                       }
                });
 });
+
+//call the category available 
+categorytable();
+function categorytable(){ 
+    let categoryquery = $(".categoryquery").val();
+                $.ajax({
+                    url:'harvests/category.php',
+                    method: "post",
+                    data:{ categoryquery:categoryquery},
+                    success: function(data) {                       
+                      $('.categorydisplay').html(data);                       
+                }
+
+               });
+ }
+
+ $(document).on('click','.categoryItem',function(){
+  let item = $(this).attr('id');
+  alert(item);
+
+});
+
+ $(document).on('keyup','#categoryquery',function(){
+    let categoryquery = $(this).val();
+          $.ajax({
+              url:'harvests/category.php',
+              method: "post",
+              data:{ categoryquery:categoryquery},
+              success: function(data) {                       
+                $('.categorydisplay').html(data);                       
+          }
+        });
+
+    
+ });
 
 //call the food available 
 pulltable();

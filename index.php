@@ -56,7 +56,7 @@ input[type=text] {
     display: inline-block;
     font-size: 16px;
     margin: 5px;
-    width: 85%;
+    width: 100%;
     border: 2px solid #f6f6f6;
     -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
@@ -119,9 +119,9 @@ input[type=text]:placeholder {
             <input type="password" required="required" id="login-password" name="password" placeholder="Password"/>
         </p>
 
-            <a href="forget_pass.php" class="button ">Forgot your password?</a>
+          
 
-            <input type="submit" class="btn btn-primary" name="submit" value="LOG IN"/>
+            <input type="submit" class="btn btn-primary w-100 p-4" name="submit" value="LOG IN"/>
         </fieldset>
         <br/>       
 

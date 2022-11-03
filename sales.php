@@ -55,7 +55,7 @@ $profile = new profile();
 
             <div class="col-md-2" style="overflow-y: scroll; height: 100%;">
   
-  <input type="text" class="form-control use-keyboard-input" id="basic-url" aria-describedby="basic-addon3">
+  <input type="text" class="form-control use-keyboard-input categoryquery" id="categoryquery" id="basic-url" aria-describedby="basic-addon3">
 
 
             
@@ -63,30 +63,8 @@ $profile = new profile();
                       <div class="card-header font-weight-bold bg-dark text-white">
                         CAREGORIES
                       </div>
-                      <ul class="list-group list-group-flush">
-                        <?php
-
-function randomHex() {
-  $chars = 'ABCDEF0123456789';
-  $color = '#';
-  for ( $i = 0; $i < 6; $i++ ) {
-     $color .= $chars[rand(0, strlen($chars) - 1)];
-  }
-  return $color;
-}
-   
- $sql =$data->con->query("SELECT * FROM category_table ");
- if (mysqli_num_rows($sql) == true){
-   while ($rws = mysqli_fetch_array($sql)){ ?>
-                    
-                        <a href="##">
-                          <li class="list-group-item cursor-pointer font-weight-bold text-white" style=" background-color: <?php echo randomHex(); ?>">
-                          <?php echo strtoupper($rws['category_name']); ?>
-                        </li></a>
-                        <?php 
-   }}
-                        ?>
-                       
+                      <ul class="list-group list-group-flush categorydisplay">
+                      
                       </ul>
                     </div>
             </div>
@@ -141,7 +119,7 @@ function randomHex() {
 
 <?php require 'includes/bottomlinks.php'; ?>
 <script type="text/javascript"  src="scripts/sales.js"></script>
-<script type="text/javascript"  src="scripts/keyboard.js"></script>
+<!-- <script type="text/javascript"  src="scripts/keyboard.js"></script> -->
 
 
 
