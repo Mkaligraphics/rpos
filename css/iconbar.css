@@ -1,0 +1,48 @@
+/* The sidepanel menu */
+.leftpanel {
+  height: 100%; /* Specify a height */
+  width: 80px; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0;
+  right: 0;
+  overflow-x: hidden; /* Disable horizontal scroll */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidepanel */
+  background-color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  
+
+}
+
+#mySidepanel ul li {
+  padding: 18px; 
+  color: #000;
+}
+
+#mySidepanel ul li a{
+  color: #000;
+}
+
+#mySidepanel  a {
+text-decoration: none;
+color: #000;
+font-size: 15px;
+}
+
+/* Position and style the close button (top right corner) */
+.leftpanel .closebtn {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 10px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/* Style the button that is used to open the sidepanel */
+.openbtn {
+  font-size:15px;
+  cursor: pointer;
+  border: none;
+}
