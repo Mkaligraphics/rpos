@@ -1,75 +1,115 @@
 
 <?php 
-   require '../classes/dbase.class.php';
- $data = new dbase();
+ require '../classes/dbase.class.php';
+ $data = new dbase;
 
-$request = $_POST;
-        $col =array(
-            0   =>  'id',
-            1   =>  'description',
-            2   =>  'unit',
-            3   =>  'quantity',
-            5   =>  'reorder',
-            6   =>  'unitquantity',
-            7   =>  'costperunit'
-        );  //create column like table in database
+if (isset($_POST['item']) && !empty($_POST['item'])){
 
-$sql ="SELECT products.id,products.description,products.quantity,products.reorder,products.unitquantity,products.costperunit,units.unitname FROM products, units WHERE products.active = '1' AND units.id = products.unit AND 1 = 1";
+      $item = $_POST['item']; 
+      $sql = $data->con->query("SELECT * FROM products_table  WHERE category_id = '$item' ");
+      if (mysqli_num_rows($sql) ==  false){
+          echo '<span class="text-danger">No records</span>';
+      } else {
+      while ($rw =  $sql->fetch_assoc()) { ?> 
 
-$query=mysqli_query($data->con,$sql);
-$totalData = mysqli_num_rows($query);
-$totalFilter= $totalData;
+  <div class="card p-2 mb-2 stw_id" id="<?php echo $rw['id']; ?>" style="width: 10em; float: left; margin: 2px; text-align: center; height: 15em; cursor: pointer;  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;" >
+    <span class="d-block text-center text-info">
+          <?php  echo ucfirst($rw['product_name']);  ?> 
 
-//Search
-$sql ="SELECT products.id,products.description,products.quantity,products.reorder,products.unitquantity,products.costperunit,units.unitname FROM products, units WHERE products.active = '1' AND units.id = products.unit AND 1 = 1";
-
-
-if(!empty($request['search']['value'])){
-    $sql.=" AND (products.id Like '".$request['search']['value']."%' ";
-    $sql.=" OR products.description Like '".$request['search']['value']."%' "; 
-    $sql.=" OR products.unit Like '".$request['search']['value']."%' "; 
-    $sql.=" OR products.quantity Like '".$request['search']['value']."%' "; 
-    $sql.=" OR products.costperunit Like '".$request['search']['value']."%' "; 
-    $sql.=" OR products.reorder Like '".$request['search']['value']."%' )"; 
-}
-
-$query = mysqli_query($data->con,$sql);
-$totalData=mysqli_num_rows($query);
-
-//Order
-$sql.=" ORDER BY ".$col[$request['order'][0]['column']]."   ".$request['order'][0]['dir']."  LIMIT ".
-    $request['start']."  ,".$request['length']."  ";
-
-$query =mysqli_query($data->con,$sql);
-
-$data=array();
-
-while($row=mysqli_fetch_array($query)){
-          
-            $subdata=array();
-            $subdata[]= strtoupper($row['description']);
-            $subdata[]= $row['quantity'];
-            $subdata[]= $row['unitquantity'].' '.$row['unitname'];
-            $subdata[]= $row['costperunit'];
-            $subdata[]= $row['reorder'];
+           <input type="hidden" name="product_quantity" id="product_quantity<?php echo $rw['id']; ?>" class="form-control" value="1" />
+        <input type="hidden" name="hidden_name" id="name<?php echo $rw['id']; ?>" value="<?php echo ucfirst($rw['product_name']); ?>" />
+  <input type="hidden" name="hidden_price" id="item_price<?php echo $rw['id']; ?>" value="<?php echo $rw['online_price']; ?>"  />    
+        </span>
+    <a href="#" class="mt-2"><img src="photos/<?php echo  $rw['photo1']; ?>" style="width: 6em; height: 6em;"></a>
+        <div class="card-body" >
+          <p class="card-text">
+            <small class="font-weight-bold d-block text-center text-danger">Ksh <?php echo $rw['online_price'];  ?></small>
+        </p>
+        </div>
+  </div>
 
 
-     $subdata[]='<a href="#" data-toggle="modal" data-target="#editproduct" id="'.$row['id'].'" class="btn btn-success btn-xs editproduct"><i class="fa fa-edit fa-fw"></i>Edit</a> <a href="#" id="'.$row['id'].'" class="btn btn-danger btn-xs deleteproduct"><i class="fa fa-trash fa-fw"></i>Delete</a>';
-    $data[]=$subdata;
-}
+<?php }}}  elseif(isset($_POST['item'])){ 
+      $sql = $data->con->query("SELECT * FROM products_table WHERE category_id = '".$_POST['categoryId']."' ");
+      if (mysqli_num_rows($sql) ==  false){
+          echo '<span class="text-danger">No records</span>';
+      } else {
+       while ($rw =  $sql->fetch_assoc()) {
+  ?>
+  
+<div class="card p-2 mb-2 stw_id" id="<?php echo $rw['id']; ?>" style="width: 10em; float: left; margin: 2px; text-align: center; height: 15em; cursor: pointer;  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;" >
+    <span class="d-block text-center text-info">
+          <?php            echo ucfirst($rw['foodname']); ?>  
+                   <input type="hidden" name="product_quantity" id="product_quantity<?php echo $rw['id']; ?>" class="form-control" value="1" />
+        <input type="hidden" name="hidden_name" id="name<?php echo $rw['id']; ?>" value="<?php echo ucfirst($rw['product_name']); ?>" />
+  <input type="hidden" name="hidden_price" id="item_price<?php echo $rw['id']; ?>" value="<?php echo $rw['online_price']; ?>"  />      
+        
+        </span>
+    <a href="#" class="mt-2"><img src="photos/<?php echo  $rw['photo']; ?>" style="width: 6em; height: 6em;"></a>
+        <div class="card-body" >
+          <p class="card-text">
+            <small class="font-weight-bold d-block text-center text-danger">Ksh <?php echo $rw['online_price']  ?></small>
+        </p>
+        </div>
+  </div>
 
-$json_data=array(
-    "draw"              =>  intval($request['draw']),
-    "recordsTotal"      =>  intval($totalData),
-    "recordsFiltered"   =>  intval($totalFilter),
-    "data"              =>  $data
-);
 
-echo json_encode($json_data);
+<?php }}} elseif (isset($_POST['search'])){ 
+  $categoryid = $_POST['categoryid'];
+  $sql = $data->con->query("SELECT * FROM products_table WHERE product_name like '%".$_POST['search']."%' AND category_id = '".$_POST['categoryid']."'  " );
+      if (mysqli_num_rows($sql) ==  false){
+          echo '<span class="text-danger">No records</span>';
+      } else {
+       while ($rw =  $sql->fetch_assoc()) {?>
+  
+<div class="card p-2 mb-2 stw_id" id="<?php echo $rw['id']; ?>" style="width: 10em; float: left; margin: 2px; text-align: center; height: 15em; cursor: pointer;  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;" >
+    <span class="d-block text-center text-info">
+          <?php            echo ucfirst($rw['product_name']); ?>  
+                   <input type="hidden" name="product_quantity" id="product_quantity<?php echo $rw['id']; ?>" class="form-control" value="1" />
+        <input type="hidden" name="hidden_name" id="name<?php echo $rw['id']; ?>" value="<?php echo ucfirst($rw['product_name']); ?>" />
+  <input type="hidden" name="hidden_price" id="item_price<?php echo $rw['id']; ?>" value="<?php echo $rw['online_price']; ?>"  />      
+        
+        </span>
+    <a href="#" class="mt-2"><img src="photos/<?php echo  $rw['photo1']; ?>" style="width: 6em; height: 6em;"></a>
+        <div class="card-body" >
+          <p class="card-text">
+            <small class="font-weight-bold d-block text-center text-danger">Ksh <?php echo $rw['online_price']  ?></small>
+        </p>
+        </div>
+  </div>
 
 
+<?php }}} else { ?>
 
+<?php
+     $sql = $data->con->query("SELECT * FROM products_table   ");
+     if (mysqli_num_rows($sql) ==  false){
+        echo '<span class="text-danger">No records</span>';
+    } else {
+    while ($rw =  $sql->fetch_assoc()) { ?> 
 
+  <div class="card  p-2 mb-2 stw_id" id="<?php echo $rw['id']; ?>" style="width: 10em; float: left; margin: 2px; text-align: center; height: 15em; cursor: pointer;  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;" >
+    <span class="d-block text-center text-info">
 
- ?> 
+          <?php  echo ucfirst($rw['product_name']);  ?> 
+
+           <input type="hidden" name="product_quantity" id="product_quantity<?php echo $rw['id']; ?>" class="form-control" value="1" />
+        <input type="hidden" name="hidden_name" id="name<?php echo $rw['id']; ?>" value="<?php echo ucfirst($rw['product_name']); ?>" />
+          <input type="hidden" name="hidden_price" id="item_price<?php echo $rw['id']; ?>" value="<?php echo $rw['online_price']; ?>"  />    
+        </span>
+          <a href="#" class="mt-2"><img src="photos/<?php echo  $rw['photo1']; ?>" style="width: 6em; height: 6em;"></a>
+        <div class="card-body" >
+          <p class="card-text">
+            <small class="font-weight-bold d-block text-center text-danger">Ksh <?php echo $rw['online_price'];  ?></small>
+        </p>
+        </div>
+  </div>
+
+  <?php 
+      }}} 
+  ?>
 

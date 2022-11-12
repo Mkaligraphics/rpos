@@ -133,7 +133,7 @@ input[type=text]:placeholder {
 
 <!-- FOOTER -->
 <div id="footer" class="fixed-bottom">
-    <p class="text-center">Any Queries email to <a href="mailto:nkhalammar@gmail.com?subject=SweetJoint%20Management%20System" target="_blank">nkhalammar@gmail.com</a>.
+    <p class="text-center">Any Queries email to <a href="mailto:support@nicktechsolutions.com?subject=Restaurant%20Management%20System" target="_blank">support@nicktechsolutions.com</a>
     </p>
 </div>
 <!-- end footer -->

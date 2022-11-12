@@ -5,16 +5,15 @@ $(function() {
 
 $(document).on('keyup', '#search',function(){
     let search = $(this).val();
-     let departmento = $("#department").val();
-     let categorie = $("#categorisedFood").val();
-         if (!(categorie)){
+     let categoryid = $("#categoryid").val();
+         if (!(categoryid)){
                 swal("Error!", "You must select category for a better filter","error");
          } else{
               
               $.ajax({
-                      url:'harvests/food.php',
+                      url:'harvests/products.php',
                       method: "POST",
-                      data:{search:search, departmento:departmento, categorie:categorie},
+                      data:{search:search, categoryid:categoryid},
                       success: function(data) {  
                           $('.items').html(data);
                   }    
@@ -45,7 +44,7 @@ $(document).on('keyup', '#search',function(){
 $(document).on('change','#categorisedFood',function(){ 
         let categoryId = $(this).val(); 
             $.ajax({
-                    url:'harvests/food.php',
+                    url:'harvests/products.php',
                     method: "post",
                     data:{categoryId:categoryId},
                     success: function(data) {                       
@@ -63,7 +62,7 @@ function categorytable(){
                     method: "post",
                     data:{ categoryquery:categoryquery},
                     success: function(data) {                       
-                      $('.categorydisplay').html(data);                       
+                      $('.categorydisplay').html(data);                                              
                 }
 
                });
@@ -72,11 +71,12 @@ function categorytable(){
  $(document).on('click','.categoryItem',function(){
   let item = $(this).attr('id');
         $.ajax({
-          url:'harvests/food.php',
+          url:'harvests/products.php',
           method: "post",
           data:{ item:item},
           success: function(data) {                       
-            $('.items').html(data);                       
+            $('.items').html(data);   
+            $("#categoryid").val(item);                               
       }
 
       });
@@ -102,7 +102,7 @@ pulltable();
 function pulltable(){ 
     let department = $("#department").val();
                 $.ajax({
-                    url:'harvests/food.php',
+                    url:'harvests/products.php',
                     method: "post",
                     data:{ department: department},
                     success: function(data) {                       
@@ -114,26 +114,6 @@ function pulltable(){
 
 //food debartment dependency
 
-foodDepartment( $("#department").val());
-function foodDepartment(department){   
-                $.ajax({
-                    url:'harvests/food_department.php',
-                    method: "POST",
-                    data:{department:department},
-                    success: function(data) {                       
-                        $("#categorisedFood").html(data);                        
-                },complete:function(){
-                  $.post("harvests/food.php", {department:department}, function(data){
-                      $(".items").html(data);
-                    }); 
-                  }
-          });
- }
-
-$(document).on('change','#department',function(){ 
-        let foodAction = $(this).val();        
-            foodDepartment(foodAction);
-});
 
 
 $(document).on('click','.stw_id',function(e){ e.preventDefault();

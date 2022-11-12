@@ -12,9 +12,6 @@ $profile = new profile();
     <link rel="stylesheet" type="text/css" href="css/iconbar.css">
     <link rel="stylesheet" type="text/css" href="css/keyboard.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    
-
 </head>
 <body>
 
@@ -33,9 +30,9 @@ $profile = new profile();
 
               <div class="row"> 
                 <div class="col-md-5">
-                  <div class="btn-group" role="group"  id="uncashout" 
+                  <!-- <div class="btn-group" role="group"  id="uncashout" 
                   style="overflow-x: scroll; width: 100%;" >                      
-                </div>                      
+                </div>                       -->
                       <div class="row">
                          <?php require 'forms/salesheader.php'; ?>         
                       </div>
@@ -50,7 +47,7 @@ $profile = new profile();
              <!-- end form -->
 
       <div class="col-md-2" style="overflow-y: scroll; height: 100%;">  
-          <input type="text" class="form-control use-keyboard-input categoryquery mb-2" id="categoryquery" id="basic-url" aria-describedby="basic-addon3">                    
+          <input type="text" placeholder="category search" class="form-control use-keyboard-input categoryquery mb-2" id="categoryquery" id="basic-url" aria-describedby="basic-addon3">                    
               <div class="card" style="width: 100% ">                     
                     <ul class="list-group list-group-flush categorydisplay">
                     
@@ -64,19 +61,19 @@ $profile = new profile();
 
 <!--SEARCH BAR-->
   <div class="filteritem mt-2">
-      <input type="text" id="search" class="form-control" placeholder="search" name="search">
+      <input type="text" id="search" class="form-control" placeholder="Product search" name="search">
+      <input type="hidden" id="categoryid" class="form-control"  name="categoryid" value="" >
 </div>
 <!--#SEARCH BAR-->
           <hr>
 
- <div style="max-height: 100%; overflow-y: scroll;">                                          
-                     
-                        <div class="items pt-2 " >
-            
-                            
-                        </div>                        
+ <div style="max-height: 100%; overflow-y: scroll;">  
+                          <div class="items pt-2 " >
+              
+                              
+                          </div>                        
                   </div>
-                    </div>
+                </div>
         </div>
 
       </div> 
@@ -86,7 +83,6 @@ $profile = new profile();
 </div>
 
    <?php require 'modals/uncashout.php'; ?>
-
 <?php require 'includes/bottomlinks.php'; ?>
 <script type="text/javascript"  src="scripts/sales.js"></script>
 <!-- <script type="text/javascript"  src="scripts/keyboard.js"></script> -->
