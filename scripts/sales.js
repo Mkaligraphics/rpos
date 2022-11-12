@@ -3,8 +3,6 @@ $(function() {
     $('.chosen-select').chosen();
 });
 
-
-
 $(document).on('keyup', '#search',function(){
     let search = $(this).val();
      let departmento = $("#department").val();
@@ -22,13 +20,9 @@ $(document).on('keyup', '#search',function(){
                   }    
             });
 
-         }
-                
+         }              
     
 });
-
-
-
 
 
 //plus and minus button
@@ -77,8 +71,16 @@ function categorytable(){
 
  $(document).on('click','.categoryItem',function(){
   let item = $(this).attr('id');
-  alert(item);
+        $.ajax({
+          url:'harvests/food.php',
+          method: "post",
+          data:{ item:item},
+          success: function(data) {                       
+            $('.items').html(data);                       
+      }
 
+      });
+  
 });
 
  $(document).on('keyup','#categoryquery',function(){
