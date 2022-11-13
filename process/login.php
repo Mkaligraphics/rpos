@@ -51,7 +51,7 @@ if (isset($_POST['password']) && !empty($_POST['password'])){
       				case $userlevel == 'User':
     //   						$store_info = $data->con -> query("insert into logs (ip_addr,id, brs,devicetype,osType) values 
    	// ('".$ip."','".$id."','".$brs."','".$deviceType."','".$os."')") or die(mysqli_error($data->con));
-	  echo '<span class="text-success"> Welcome, login successful.... </span><script>setTimeout(function(){window.location = "sales"},2000);</script>';  
+	  echo '<span class="text-success"> Welcome, login successful.... </span><script>setTimeout(function(){window.location = "tables"},2000);</script>';  
       					break;
 
     //            case $userlevel == 3:
