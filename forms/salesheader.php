@@ -1,8 +1,10 @@
-
+<?php
+$userid = $_SESSION['id'];
+?>
 <div class="form-group col-xs-10 col-sm-12 col-md-12 col-lg-12 ">
     <select class="form-control chosen-select input-sm" id="table" name="table">
         <?php 
-            $qry = $data->con->query("SELECT * FROM customer_tables WHERE active = '1'");
+            $qry = $data->con->query("SELECT * FROM customer_tables WHERE served_by = '$userid' AND active = '1'");
             while ($rw = mysqli_fetch_array($qry)) { ?>
                     <option value="<?php echo $rw['id']; ?>"><?php echo strtoupper($rw['table_number']); ?></option>  
             <?php }  ?>                                    

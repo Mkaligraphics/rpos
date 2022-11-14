@@ -7,7 +7,7 @@ $profile = new profile();
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>SweetJoint Restaurant Point of Sale</title>
+    <title>WAQANDA RESTAURANT POS</title>
     <?php include 'includes/headerlinks.php'; ?>
     <link rel="stylesheet" type="text/css" href="css/iconbar.css">
     <link rel="stylesheet" type="text/css" href="css/keyboard.css">

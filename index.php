@@ -6,7 +6,7 @@ session_start();
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>SweetJoint Restaurant Point of Sale</title>
+    <title>WAQANDA RESTAURANT POS</title>
 
     <!-- Stylesheets -->
     <?php include 'includes/headerlinks.php'; ?>
@@ -111,7 +111,7 @@ input[type=text]:placeholder {
     <p class="feedback"></p>           
         <p>
 
-          <img src="img/logo.png" style="width: 8.5em;"> <br><br>
+          <img src="img/logo2.png" style="width: 14em;"> <br><br>
             
         </p>
 
