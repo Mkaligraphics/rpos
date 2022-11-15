@@ -355,7 +355,7 @@ $(document).on('click','.uncashout',function(){
                 },complete:function(){
                   $.post("harvests/calluncashout.php", {order: order}, function(data){
                    $(".uncashoutItems").html(data);
-                   $(".pos").html('<a href="#"='+order+'" class="btn btn-success" onClick="printJS('+"'sweetjoint/reports/printorder?orderid="+order+"'"+')" id="printorder"> <i class="fa fa-print"></i> Print order</a>');
+                   $(".pos").html('<a href="#"='+order+'" class="btn btn-success" onClick="printJS('+"'rpos/reports/printorder?orderid="+order+"'"+')" id="printorder"> <i class="fa fa-print"></i> Print order</a>');
 
                    });  
                 }  
