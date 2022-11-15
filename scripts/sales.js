@@ -97,24 +97,6 @@ function categorytable(){
     
  });
 
-//call the food available 
-pulltable();
-function pulltable(){ 
-    let department = $("#department").val();
-                $.ajax({
-                    url:'harvests/products.php',
-                    method: "post",
-                    data:{ department: department},
-                    success: function(data) {                       
-                        $('.items').html(data);
-                }
-
-               });
- }
-
-//food debartment dependency
-
-
 
 $(document).on('click','.stw_id',function(e){ e.preventDefault();
   let   product_id = $(this).attr('id'),

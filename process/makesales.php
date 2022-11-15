@@ -2,9 +2,10 @@
 session_start();
  require '../classes/dbase.class.php';
  $data = new dbase();
-
  $id = $_SESSION['id'];
 
+echo'ok';
+ die();
 	if (isset($_POST)){
 
 	if (empty($_POST["totalitems"]) || empty($_POST['pricetotal'])){
