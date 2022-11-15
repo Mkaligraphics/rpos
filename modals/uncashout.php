@@ -17,7 +17,7 @@
      <div class="card" id="printPreview">
          <div class="card-header p-4">
              <div class="float-right">
-                 <h3 class="mb-0 text-danger">Order#: <span id="order">Null</span></h3>
+                 <h3 class="mb-0 text-danger">#: <span id="order">Null</span></h3>
                  Date: <span id="dueDate">Null</span>
                 
              </div>
@@ -67,7 +67,9 @@
             <!--Footer-->
         <div class="modal-footer">
 <button type="button" id="trial" class="btn btn-danger" data-dismiss="modal">X Close</button>
-<a href="#"  class="btn btn-warning"><i class="fa fa-print"></i> Add order</a>
+<a href="#"  class="btn btn-warning"><i class="fa fa-plus"></i> Add order</a>
+<button type="button" id="merge" class="btn btn-dark"><i class="fa fa-list fa-fw"></i> Merge</button>
+
 <div class="pos"></div>              
         
 </div>

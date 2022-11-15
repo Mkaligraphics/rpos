@@ -30,9 +30,9 @@ $profile = new profile();
 
               <div class="row"> 
                 <div class="col-md-5">
-                  <!-- <div class="btn-group" role="group"  id="uncashout" 
+                  <div class="btn-group" role="group"  id="uncashout" 
                   style="overflow-x: scroll; width: 100%;" >                      
-                </div>                       -->
+                </div>                      
                       <div class="row">
                          <?php require 'forms/salesheader.php'; ?>         
                       </div>

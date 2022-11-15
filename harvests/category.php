@@ -22,10 +22,12 @@ $category = $_POST['categoryquery'];
  if (mysqli_num_rows($sql) == true){    
    while ($rws = mysqli_fetch_array($sql)){ ?>
                     
-                        <a href="##" class="categoryItem" id="<?php echo $rws['id']; ?>">
+                      <a href="##" class="categoryItem" id="<?php echo $rws['id']; ?>">
                           <li class="list-group-item cursor-pointer font-weight-bold text-white" style=" background-color: <?php echo randomHex(); ?>">
                           <?php echo strtoupper($rws['category_name']); ?>
-                        </li></a>
+                        </li>
+                      </a>
+                     
                         <?php 
    }}else{ ?>
 

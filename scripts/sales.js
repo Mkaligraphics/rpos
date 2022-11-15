@@ -68,6 +68,22 @@ function categorytable(){
                });
  }
 
+
+ productstable();
+function productstable(){ 
+  let categoryid = $('#categoryquery').val();
+                $.ajax({
+                  url:'harvests/products.php',
+                    method: "post",
+                    data:{ categoryid:categoryid},
+                    success: function(data) {                       
+                      $('.items').html(data);                                          
+                }
+
+               });
+ }
+
+
  $(document).on('click','.categoryItem',function(){
   let item = $(this).attr('id');
         $.ajax({
@@ -310,11 +326,18 @@ swal({
 
 calluncashout();
 function calluncashout(){
-  let order = 'order';
-  $.post("harvests/uncashout.php", {order:order}, function(data){
-      $("#uncashout").html(data);
+  let table_id = $('#table').val();
+  $.post("harvests/uncashout.php", {table_id:table_id}, function(data){
+        $("#uncashout").html(data);
     }); 
 }
+
+$(document).on('change','#table',function(){
+  let table_id = $(this).val();
+  $.post("harvests/uncashout.php", {table_id:table_id}, function(data){
+    $("#uncashout").html(data);
+}); 
+});
 
 $(document).on('click','.uncashout',function(){ 
     let order = $(this).attr('id'); 
@@ -324,11 +347,11 @@ $(document).on('click','.uncashout',function(){
                     data:{order: order},
                     dataType:"json",
                     success: function(customerDetails) {                       
-                    $("#customerName").html(customerDetails.fullname);
-                    $("#dueDate").html(customerDetails.recdate);
-                    $("#tableNo").html(customerDetails.tablelabel);
-                    $("#order").html(customerDetails.id);
-                    $("#billN").val(customerDetails.billno);                    
+                    $("#customerName").html(customerDetails.name);
+                    $("#dueDate").html(customerDetails.timestamp);
+                    $("#tableNo").html(customerDetails.table_number);
+                    $("#order").html(customerDetails.details);
+                    $("#billN").val(customerDetails.details);                    
                 },complete:function(){
                   $.post("harvests/calluncashout.php", {order: order}, function(data){
                    $(".uncashoutItems").html(data);

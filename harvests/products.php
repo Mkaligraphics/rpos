@@ -12,7 +12,7 @@ if (isset($_POST['item']) && !empty($_POST['item'])){
       } else {
       while ($rw =  $sql->fetch_assoc()) { ?> 
 
-  <div class="card p-2 mb-2 stw_id" id="<?php echo $rw['id']; ?>" style="width: 10em; float: left; margin: 2px; text-align: center; height: 15em; cursor: pointer;  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  <div class="card p-2 mb-2 stw_id" id="<?php echo $rw['id']; ?>" style="width: 10em; float: left; margin: 2px; text-align: center; height: 18em; cursor: pointer;  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;" >
     <span class="d-block text-center text-info">
           <?php  echo ucfirst($rw['product_name']);  ?> 
@@ -26,6 +26,7 @@ if (isset($_POST['item']) && !empty($_POST['item'])){
           <p class="card-text">
             <small class="font-weight-bold d-block text-center text-danger">Ksh <?php echo $rw['online_price'];  ?></small>
         </p>
+        <span class="text-success"><?php echo $rw['no_units']; ?></span>
         </div>
   </div>
 
@@ -38,7 +39,7 @@ if (isset($_POST['item']) && !empty($_POST['item'])){
        while ($rw =  $sql->fetch_assoc()) {
   ?>
   
-<div class="card p-2 mb-2 stw_id" id="<?php echo $rw['id']; ?>" style="width: 10em; float: left; margin: 2px; text-align: center; height: 15em; cursor: pointer;  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  <div class="card p-2 mb-2 stw_id" id="<?php echo $rw['id']; ?>" style="width: 10em; float: left; margin: 2px; text-align: center; height: 18em; cursor: pointer;  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;" >
     <span class="d-block text-center text-info">
           <?php            echo ucfirst($rw['foodname']); ?>  
@@ -52,6 +53,8 @@ if (isset($_POST['item']) && !empty($_POST['item'])){
           <p class="card-text">
             <small class="font-weight-bold d-block text-center text-danger">Ksh <?php echo $rw['online_price']  ?></small>
         </p>
+        <span class="text-success"><?php echo $rw['no_units']; ?></span>
+
         </div>
   </div>
 
@@ -64,7 +67,7 @@ if (isset($_POST['item']) && !empty($_POST['item'])){
       } else {
        while ($rw =  $sql->fetch_assoc()) {?>
   
-<div class="card p-2 mb-2 stw_id" id="<?php echo $rw['id']; ?>" style="width: 10em; float: left; margin: 2px; text-align: center; height: 15em; cursor: pointer;  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  <div class="card p-2 mb-2 stw_id" id="<?php echo $rw['id']; ?>" style="width: 10em; float: left; margin: 2px; text-align: center; height: 18em; cursor: pointer;  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;" >
     <span class="d-block text-center text-info">
           <?php            echo ucfirst($rw['product_name']); ?>  
@@ -78,6 +81,8 @@ if (isset($_POST['item']) && !empty($_POST['item'])){
           <p class="card-text">
             <small class="font-weight-bold d-block text-center text-danger">Ksh <?php echo $rw['online_price']  ?></small>
         </p>
+        <span class="text-success"><?php echo $rw['no_units']; ?></span>
+
         </div>
   </div>
 
@@ -91,7 +96,7 @@ if (isset($_POST['item']) && !empty($_POST['item'])){
     } else {
     while ($rw =  $sql->fetch_assoc()) { ?> 
 
-  <div class="card  p-2 mb-2 stw_id" id="<?php echo $rw['id']; ?>" style="width: 10em; float: left; margin: 2px; text-align: center; height: 15em; cursor: pointer;  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+<div class="card p-2 mb-2 stw_id" id="<?php echo $rw['id']; ?>" style="width: 10em; float: left; margin: 2px; text-align: center; height: 18em; cursor: pointer;  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;" >
     <span class="d-block text-center text-info">
 
@@ -106,6 +111,8 @@ if (isset($_POST['item']) && !empty($_POST['item'])){
           <p class="card-text">
             <small class="font-weight-bold d-block text-center text-danger">Ksh <?php echo $rw['online_price'];  ?></small>
         </p>
+        <span class="text-success"><?php echo $rw['no_units']; ?></span>
+
         </div>
   </div>
 
