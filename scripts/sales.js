@@ -351,7 +351,9 @@ $(document).on('click','.uncashout',function(){
                     $("#dueDate").html(customerDetails.timestamp);
                     $("#tableNo").html(customerDetails.table_number);
                     $("#order").html(customerDetails.details);
-                    $("#billN").val(customerDetails.details);                    
+                    $("#billN").val(customerDetails.details);    
+            $(".separate").html('<a href="separate.php?rcp='+customerDetails.details+'" class="btn btn-dark"> <i class="fa fa-sort-amount-desc fa-fw"></i> Separate bill</a>');
+                
                 },complete:function(){
                   $.post("harvests/calluncashout.php", {order: order}, function(data){
                    $(".uncashoutItems").html(data);

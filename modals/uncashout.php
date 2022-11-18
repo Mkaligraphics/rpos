@@ -67,9 +67,7 @@
             <!--Footer-->
         <div class="modal-footer">
 <button type="button" id="trial" class="btn btn-danger" data-dismiss="modal">X Close</button>
-<a href="#"  class="btn btn-warning"><i class="fa fa-plus"></i> Add order</a>
-<button type="button" id="merge" class="btn btn-dark"><i class="fa fa-list fa-fw"></i> Merge</button>
-
+<div class="separate"></div> 
 <div class="pos"></div>              
         
 </div>
