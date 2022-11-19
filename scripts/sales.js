@@ -352,7 +352,7 @@ $(document).on('click','.uncashout',function(){
                     $("#tableNo").html(customerDetails.table_number);
                     $("#order").html(customerDetails.details);
                     $("#billN").val(customerDetails.details);    
-            $(".separate").html('<a href="separate.php?rcp='+customerDetails.details+'" class="btn btn-dark"> <i class="fa fa-sort-amount-desc fa-fw"></i> Separate bill</a>');
+            $(".separate").html('<a href="separate.php?rcp='+customerDetails.details+'&&table='+customerDetails.table_number+'" class="btn btn-dark"> <i class="fa fa-sort-amount-desc fa-fw"></i> Separate bill</a>');
                 
                 },complete:function(){
                   $.post("harvests/calluncashout.php", {order: order}, function(data){
