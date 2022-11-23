@@ -12,68 +12,39 @@ session_start();
     <?php include 'includes/headerlinks.php'; ?>
     
     <style type="text/css">
-       
-input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
-  background-color: #39ace7;
+
+.calc-row div.screen {
+  font-family: Droid Sans Mono;
+  display: table;
+  width: 100%;
+  background-color: #aaa;
+  text-align: right;
+  font-size: 2em;
+  min-height: 1.2em;
+  margin-left: 0.5em;
+  padding-right: 0.5em;
+  border: 1px solid #888;
+  color: #333;
 }
 
-input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
-  -moz-transform: scale(0.95);
-  -webkit-transform: scale(0.95);
-  -o-transform: scale(0.95);
-  -ms-transform: scale(0.95);
-  transform: scale(0.95);
-}
-
-input[type=text] {
-  background-color: #f6f6f6;
-  border: none;
-  color: #0d0d0d;
-  padding: 15px 32px;
+.calc-row div {
   text-align: center;
-  text-decoration: none;
   display: inline-block;
-  font-size: 16px;
-  margin: 5px;
-  width: 85%;
-  border: 2px solid #f6f6f6;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -ms-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
-  -webkit-border-radius: 5px 5px 5px 5px;
-  border-radius: 5px 5px 5px 5px;
+  font-weight: bold;
+  border: 1px solid #555;
+  background-color: #eee;
+  padding: 10px 4px;
+  margin: 7px 5px;
+  border-radius: 2px;
+  width: 100px;
 }
 
-  input[type=password] {
-    background-color: #f6f6f6;
-    border: none;
-    color: #0d0d0d;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 5px;
-    width: 100%;
-    border: 2px solid #f6f6f6;
-    -webkit-transition: all 0.5s ease-in-out;
-    -moz-transition: all 0.5s ease-in-out;
-    -ms-transition: all 0.5s ease-in-out;
-    -o-transition: all 0.5s ease-in-out;
-    transition: all 0.5s ease-in-out;
-    -webkit-border-radius: 5px 5px 5px 5px;
-    border-radius: 5px 5px 5px 5px;
-  }
-
-input[type=text]:focus {
-  background-color: #fff;
-  border-bottom: 2px solid #5fbae9;
+.calc-row div.zero {
+  width: 112px;
 }
 
-input[type=text]:placeholder {
-  color: #cccccc;
+.calc-row div.zero {
+  margin-right: 5px;
 }
 
     </style>
@@ -105,27 +76,34 @@ input[type=text]:placeholder {
 <!-- MAIN CONTENT -->
 <div id="parent">
 
-    <form action="process/login.php" id="form_login" method="POST" id="login-form" class="loginform" autocomplete="off">
 
-        <fieldset>
-    <p class="feedback"></p>           
-        <p>
+<div class="calculator">
+  <div class="calc-row">
+    <div class="screen">0</div>
+  </div>
+  
+  <div class="calc-row">
+  <a href="#"><div class="button">7</div> <a href="#"><div class="button">8</div><div class="button">9</div></a>
+  </div>
+  
+  <div class="calc-row">
+  <a href="#"><div class="button">4</div> <a href="#"><div class="button">5</div><div class="button">6</div></a>
+  </div>
+  
+  <div class="calc-row">
+  <a href="#"><div class="button">1</div> <a href="#"><div class="button">2</div> <a href="#"><div class="button">3</div></a>
+  </div>
+  
+  <div class="calc-row">
+       <a href="#"><div class="button zero">0</div> </a> <a href="#"><div class="button">CLEAR</div></a> 
+  </div>
 
-          <img src="img/logo2.png" style="width: 14em;"> <br><br>
-            
-        </p>
+    
+  <div>
+        <a href="#" class="enter"><div class="btn btn-dark btn-lg btn-block">ENTER</div></a> 
+  </div>
 
-        <p>
-            <input type="password" required="required" id="login-password" name="password" placeholder="Password"/>
-        </p>
-
-          
-
-            <input type="submit" class="btn btn-primary w-100 p-4" name="submit" value="LOG IN"/>
-        </fieldset>
-        <br/>       
-
-    </form>
+</div>
 
 </div>
 <!-- end content -->
@@ -143,6 +121,8 @@ input[type=text]:placeholder {
 </body>
 
 <script type="text/javascript" src="scripts/login.js"></script>
+<script type="text/javascript" src="scripts/inputjs.js"></script>
+
 <script>
 let daysoftheWeek=['Sun','Mon','Tue','Wed','Thur','Fri','Sat'];
 let month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];

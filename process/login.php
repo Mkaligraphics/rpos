@@ -33,7 +33,7 @@ if (isset($_POST['password']) && !empty($_POST['password'])){
 		$rw = $data->con->query ("SELECT * FROM users_table WHERE password = '$password '  ") or die(mysqli_errno($data->con)) ;//if the user exists	
 		$rst = mysqli_num_rows($rw);
        if ($rst == false){
-        	echo '<span class="text-danger">Authentication failed, try again...</span>';
+        	echo '0';
       } else if ($rst  == true){
 
       		//output resulst
@@ -47,27 +47,8 @@ if (isset($_POST['password']) && !empty($_POST['password'])){
       		$os;//Os type
       		$ip;
 
-      		switch ($userlevel) {
-      				case $userlevel == 'User':
-    //   						$store_info = $data->con -> query("insert into logs (ip_addr,id, brs,devicetype,osType) values 
-   	// ('".$ip."','".$id."','".$brs."','".$deviceType."','".$os."')") or die(mysqli_error($data->con));
-	  echo '<span class="text-success"> Welcome, login successful.... </span><script>setTimeout(function(){window.location = "tables"},2000);</script>';  
-      					break;
+			echo  $userlevel;
 
-    //            case $userlevel == 3:
-    //                     $store_info = $data->con -> query("insert into logs (ip_addr,id, brs,devicetype,osType) values 
-    //   ('".$ip."','".$id."','".$brs."','".$deviceType."','".$os."')") or die(mysqli_error($data->con));
-    //  echo '<span class="text-success"> Welcome, login successful.... </span><script>setTimeout(function(){window.location = "accounts"},2000);</script>';  
-    //                  break;
-      				
-      				default:      					
-    //   						$store_info = $data->con -> query("insert into logs (ip_addr,id, brs,devicetype,osType) values 
-   	// ('".$ip."','".$id."','".$brs."','".$deviceType."','".$os."')") or die(mysqli_error($data->con));
-	  echo '<span class="text-success"> Welcome, login successful.... </span><script>setTimeout(function(){window.location = "admin"},2000);</script>';  
-      					
-      					break;
-      			}	
-   	
    	
 		}			
 }		

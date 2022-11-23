@@ -1,35 +1,32 @@
-
-$(document).on('submit','form.loginform',function(event){
-  event.preventDefault();
-      var that = $(this),
-      url = that.attr('action'),
-      type = that.attr('method'),
-      data={};
-      that.find('[name]').each(function(index,value){
-      var that = $(this),
-          name = that.attr('name'),
-          value = that.val();
-      data[name] = value;
-   
-    });
-    
+$(document).on('click','.enter',function(){
+  let password =  $('.screen').html();
+  if (password =='0'){
+      $.notify('Please input your password...','error');
+      return false;
+  }
                         $.ajax({
-                                  url: url,
-                                    type: type,
-                                    data:data, 
-                                    beforeSend: function() {                                 
-                                $('.feedback').html(' Processing...<img src="img/3.gif" />').fadeIn();  
-                              },
-                                success: function(responce){                               
-                                 
-                          $('.feedback').html(responce); 
-                            },complete:function(){                               
-                              setTimeout(function() { $(".feedback").fadeOut(); }, 2000);
+                                  url: 'process/login.php',
+                                    type: 'POST',
+                                    data:{password: password},                                    
+                                success: function(responce){
+                                  if (responce == '0'){
+                                     $.notify('Authentication failed...','error');
+                                  }  else{
+                                        switch (responce) { 
+                                            case 'accounts': 
+                                            window.location = "accounts";                                   
+                                              break;
+                                              case 'Admin': 
+                                                  window.location = "admin";
+                                              break;                                   
+                                            default:
+                                              window.location = "tables";
+                                        }
+                                        
+                                  }                        
+                                  
                             },error:function(){
                                 alert(' Sorry, we are encoutering a technical issue, please try again!')
                             }
-
-                  });     
-
-    return false;
-});
+        })
+})
