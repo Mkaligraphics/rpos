@@ -13,7 +13,11 @@ $profile = new profile();
     <link rel="stylesheet" type="text/css" href="css/keyboard.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
-<body>
+<body style="
+   height: 100%;
+   margin: 0;
+   overflow: hidden;
+">
 
  <?php require 'includes/navbar.php'; ?>
 
@@ -31,7 +35,7 @@ $profile = new profile();
               <div class="row"> 
                 <div class="col-md-5">
                   <div class="btn-group" role="group"  id="uncashout" 
-                  style="overflow-x: scroll; width: 100%;" >                      
+                  style="overflow-x: scroll; width: 100%; " >                      
                 </div>                      
                       <div class="row">
                          <?php require 'forms/salesheader.php'; ?>         
@@ -46,10 +50,10 @@ $profile = new profile();
           </form>
              <!-- end form -->
 
-      <div class="col-md-2" style="overflow-y: scroll; height: 100%;">  
+      <div class="col-md-2" style="overflow-y: scroll; height: 50em;">  
           <input type="text" placeholder="category search" class="form-control use-keyboard-input categoryquery mb-2" id="categoryquery" id="basic-url" aria-describedby="basic-addon3">                    
               <div class="card" style="width: 100% ">                     
-                    <ul class="list-group list-group-flush categorydisplay">
+                    <ul class="list-group list-group-flush categorydisplay mb-2">
                     
                     </ul>
               </div>
@@ -67,7 +71,7 @@ $profile = new profile();
 <!--#SEARCH BAR-->
           <hr>
 
- <div style="max-height: 100%; overflow-y: scroll;">  
+ <div style="height: 50em; overflow-y: scroll;">  
                           <div class="items pt-2 " >
               
                               

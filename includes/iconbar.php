@@ -1,5 +1,5 @@
 
-<div id="mySidepanel" class="leftpanel">
+<div id="mySidepanel" class="leftpanel" style="display:none;" >
   <div class="icon-bar">
     <ul class="nav navbar-nav">
         <li class="text-center">

@@ -46,8 +46,10 @@ if (isset($_POST['password']) && !empty($_POST['password'])){
 		 	$deviceType;
       		$os;//Os type
       		$ip;
-
-			echo  $userlevel;
+if ($data->con->query("INSERT INTO logs_table (user_id, company_id, description) VALUES ('$id','1','Logged in Successfully')")){
+	echo  $userlevel;
+}
+			
 
    	
 		}			
