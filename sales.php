@@ -30,12 +30,11 @@ $profile = new profile();
   <div class="content-wrapper">
 
       <div class="main">
-          <form onsubmit="return false" class="sale" id="sale" method="POST" autocomplete="off" action="process/makesales.php">
-
+         
+      <form onsubmit="return false" class="sale" id="sale" method="POST" autocomplete="off" action="process/makesales.php">
               <div class="row"> 
                 <div class="col-md-5">
-                  <div class="btn-group" role="group"  id="uncashout" 
-                  style="overflow-x: scroll; width: 100%; " >                      
+                      <div class="btn-group" role="group"  id="uncashout" style="overflow-x: scroll; width: 100%; " >                      
                 </div>                      
                       <div class="row">
                          <?php require 'forms/salesheader.php'; ?>         
@@ -51,7 +50,6 @@ $profile = new profile();
              <!-- end form -->
 
       <div class="col-md-2" style="overflow-y: scroll; height: 50em;">  
-          <input type="text" placeholder="category search" class="form-control use-keyboard-input categoryquery mb-2" id="categoryquery" id="basic-url" aria-describedby="basic-addon3">                    
               <div class="card" style="width: 100% ">                     
                     <ul class="list-group list-group-flush categorydisplay mb-2">
                     
@@ -65,8 +63,8 @@ $profile = new profile();
 
 <!--SEARCH BAR-->
   <div class="filteritem mt-2">
-      <input type="text" id="search" class="form-control" placeholder="Product search" name="search">
-      <input type="hidden" id="categoryid" class="form-control"  name="categoryid" value="" >
+      <!-- <input type="text" id="search" class="form-control use-keyboard-input" placeholder="Product search" name="search"> -->
+      <!-- <input type="hidden" id="categoryid" class="form-control"  name="categoryid"  > -->
 </div>
 <!--#SEARCH BAR-->
           <hr>

@@ -27,9 +27,13 @@ $(document).on('keyup', '#search',function(){
 //plus and minus button
   $(document).ready(function(){
     $('#qty_input').prop('disabled', true);
+   
     $('#plus-btn').click(function(){
-      $('#qty_input').val(parseInt($('#qty_input').val()) + 1 );
+     let thisPlus = $(this).attr('id');
+      let currentValue = $('#qty_input').val(parseInt($('#qty_input').val()) + 1 );
+           
           });
+
         $('#minus-btn').click(function(){
       $('#qty_input').val(parseInt($('#qty_input').val()) - 1 );
       if ($('#qty_input').val() == 0) {
@@ -56,11 +60,11 @@ $(document).on('change','#categorisedFood',function(){
 //call the category available 
 categorytable();
 function categorytable(){ 
-    let categoryquery = $(".categoryquery").val();
+    let category = 'category';
                 $.ajax({
                     url:'harvests/category.php',
                     method: "post",
-                    data:{ categoryquery:categoryquery},
+                    data:{ category:category},
                     success: function(data) {                       
                       $('.categorydisplay').html(data);                                              
                 }
@@ -120,7 +124,6 @@ $(document).on('click','.stw_id',function(e){ e.preventDefault();
         product_price =  $('#item_price'+product_id).val(),
         product_quantity = $('#product_quantity'+product_id).val(),      
         action = "add";
-
 
     $.ajax({
                         url : "process/actioncart.php",
@@ -312,7 +315,7 @@ swal({
                                 success:function(feedback)  {
                                 load_cart_data();      
                                     swal(feedback, {icon: "success", });
-                                },complete:function(){
+                                },complete:function(){  
                                      pulltable();
                                  calluncashout();                                 
                                 }
@@ -326,13 +329,13 @@ swal({
 
 calluncashout();
 function calluncashout(){
-  let table_id = $('#table').val();
+  let table_id = $('#tableno').val();
   $.post("harvests/uncashout.php", {table_id:table_id}, function(data){
         $("#uncashout").html(data);
     }); 
 }
 
-$(document).on('change','#table',function(){
+$(document).on('change','#tableno',function(){
   let table_id = $(this).val();
   $.post("harvests/uncashout.php", {table_id:table_id}, function(data){
     $("#uncashout").html(data);

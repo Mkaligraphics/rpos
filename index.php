@@ -7,7 +7,6 @@ session_start();
 <head>
     <meta charset="utf-8">
     <title>WAQANDA RESTAURANT POS</title>
-
     <!-- Stylesheets -->
     <?php include 'includes/headerlinks.php'; ?>
     <link href="css/inputcss.css" rel="stylesheet" />
@@ -20,15 +19,11 @@ session_start();
     <div class="container-fluid">
         <div id="login-intro">
             <h3 style="color: #FFBF00 !important">Waqanda Restaurant Dashboard</h3>
-            <h6>Enter your credentials below</h6>            
-           
+            <h6>Enter your credentials below</h6>    
+                          <span class="text-danger" id="livedate"></span>
+                          <span class="text-info" id="livetime"></span>
         </div>
 
-        <div class="float-right" class="font-weight-bold">
-                    <span class="text-danger" id="livedate"></span>
-                    <span class="text-info" id="livetime"></span>
-            </div>
-        
     </div>
     <!-- end full-width -->
 
@@ -61,7 +56,7 @@ session_start();
 
     
   <div>
-        <a href="#" class="enter "><div class="btn btn-dark btn-lg btn-block">ENTER</div></a> 
+        <a href="#" class="enter "><div class="btn btn-dark btn-lg btn-block mr-1 ">ENTER</div></a> 
   </div>
 
 </div>

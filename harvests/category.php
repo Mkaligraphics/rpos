@@ -10,13 +10,9 @@ function randomHex() {
   }
   return $color;
 }
-$category = $_POST['categoryquery'];
-  if (!empty($_POST['categoryquery'])) {
-    $sql = $data->con->query("SELECT * FROM category_table WHERE category_name LIKE '%".$category."%'  ");
-   
-  }else{
-    $sql = $data->con->query("SELECT * FROM category_table ");
-  }
+  if (!empty($_POST['category'])) {
+
+    $sql = $data->con->query("SELECT * FROM category_table WHERE s = '1' ");
 
 
  if (mysqli_num_rows($sql) == true){    
@@ -32,5 +28,5 @@ $category = $_POST['categoryquery'];
    }}else{ ?>
 
 <p class="text-danger p-4 font-weight-bold"> <i class="fa fa-warning fa-fw"></i> Record not found </p>
-<?php } ?>
+<?php }   }?>
                        

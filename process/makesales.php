@@ -6,7 +6,7 @@
 
 
 	if (isset($_POST)){
-			if (empty($_POST['table'])){
+			if (empty($_POST['tableno'])){
 				echo 'Please choose a table...';
 				exit(0);
 			}
@@ -19,7 +19,7 @@
 	$items = $_POST['totalitems']; 
 	$totalpayable = $_POST['pricetotal']; 
 	$customer = $_POST['customer']; 
-	$table = $_POST['table']; 	
+	$table = $_POST['tableno']; 	
 	
 	//Arrays
 	$count = count($_POST['item_id']);
@@ -27,7 +27,7 @@
 	$item_price_ar = $_POST['item_price'];
 	$item_total_ar = $_POST['item_total'];
 	$qty_ar = $_POST['quantity'];
-   
+	
 	for ($i=0; $i < $count; $i++ ){	
 		$sql=mysqli_query($data->con,"SELECT * FROM products_table  WHERE `no_units` >= '$qty_ar[$i]' AND id = '$item_ar[$i]'");
 				if(mysqli_num_rows($sql)<1){
@@ -36,7 +36,6 @@
 				}
 			}	
 		
-
 
 			for ($i=0; $i < $count; $i++ ){	
 				if (empty($qty_ar[$i])){
@@ -54,8 +53,8 @@ $details = $rs['details'];
 if ($data->con->query("UPDATE sales_table SET sub_total = sub_total + '$totalpayable', total_items = total_items + '".$_POST['totalitems']."' WHERE details = '$details'")){
 
 					for($i=0; $i < $count; $i++ ){
-							$data->con->query("INSERT INTO  sales_details (details, unit_price, qty, product_id,unit_total)
-							 VALUES ('$details', '$item_price_ar[$i]','$qty_ar[$i]','0','$item_ar[$i]','$item_total_ar[$i]') ") ;
+							$data->con->query("INSERT INTO  sales_details (details, unit_price, qty, product_id, unit_total)
+							 VALUES ('$details', '$item_price_ar[$i]','$qty_ar[$i]','$item_ar[$i]','$item_total_ar[$i]') ");
 					}
 					
 					for ($i=0; $i < $count; $i++ ){
